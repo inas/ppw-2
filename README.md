@@ -13,4 +13,4 @@
 
 ### Link heroku app: 
 
-[heroku app](https://ling-in.herokuapp.com/)
+[heroku app](https://tugas2.herokuapp.com/)
