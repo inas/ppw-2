@@ -24,7 +24,7 @@ import fitur_2.urls as fitur_2
 
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
-    url(r'^fitur-1/', include(fitur_1, namespace='fitur-1')),
+    # url(r'^fitur-1/', include(fitur_1, namespace='fitur-1')),
     url(r'^fitur-2/', include(fitur_2,namespace='fitur-2')),
  #    url(r'^fitur-3/', include(fitur_3,namespace='fitur-3')),
 	# url(r'^fitur-4/', include(fitur_4,namespace='fitur-4')),

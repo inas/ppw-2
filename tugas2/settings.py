@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'fitur_1',
-    # 'fitur_2',
+    'fitur_2',
     # 'fitur_3',
     # 'fitur_4',
 ]
