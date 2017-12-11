@@ -1,0 +1,34 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- bootstrap csss -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fitur_1.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+</head>
+<style type="text/css">
+</style>
+<body>
+<header>
+   {% include "fitur_1/partials/header.html" %}
+    <!-- Your Header Here -->
+</header>
+<content>
+    {% block content %}
+    <!-- Your Content Here -->
+    {% endblock %}
+</content>
+<footer>
+    <hr>
+    {% block footer %}
+    {% endblock %}
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
