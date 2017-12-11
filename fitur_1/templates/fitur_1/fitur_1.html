@@ -49,8 +49,8 @@
     }
   </script>
 </head>
-<body>
-  <script type="in/Login"></script>
+<body data-hijacking="off" data-animation="scaleDown">
+  <!--PROFILE SECTION - SOON TO BE DELETED -->
   <div id="profileData" style="display: none;">
     <p><a href="javascript:void(0);" onclick="logout()">Logout</a></p>
     <div id="picture"></div>
@@ -61,7 +61,31 @@
         <p id="location"></p>
         <p id="link"></p>
     </div>
-</div>
+  </div>
+
+  <section class="cd-section visible">
+  <div>
+    <h2>Page Scroll Effects</h2>
+  </div>
+</section>
+ 
+<section class="cd-section">
+  <div>
+    <h2>Section 2</h2>
+  </div>
+</section>
+ 
+<section class="cd-section">
+  <h2><script type="in/Login"></script></h2>
+</section>
+ 
+<nav>
+  <ul class="cd-vertical-nav">
+    <li><a href="#0" class="cd-prev inactive">Next</a></li>
+    <li><a href="#0" class="cd-next">Prev</a></li>
+  </ul>
+</nav> <!-- .cd-vertical-nav -->
+
 </body>
 
 {% endblock %}

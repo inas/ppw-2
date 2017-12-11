@@ -19,4 +19,4 @@ class UnitTest(TestCase):
 		html_response = response.content.decode('utf-8')
 		self.assertEqual(response.status_code, 200)
 		self.assertTemplateUsed('fitur_1/fitur_1.html')
-		self.assertIn("Login with LinkedIn", html_response)
+		self.assertIn("Log In with LinkedIn", html_response)
