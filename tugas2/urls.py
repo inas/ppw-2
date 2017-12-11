@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
-# import fitur_1.urls as fitur_1
+import fitur_1.urls as fitur_1
 import fitur_2.urls as fitur_2
 # import fitur_3.urls as fitur_3
 # import fitur_4.urls as fitur_4
