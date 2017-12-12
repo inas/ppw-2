@@ -5,20 +5,20 @@ from .views import index, add_message
 from .models import Message
 from .forms import Message_Form
 
-# Create your tests here.
-class Fitur3UnitTest(TestCase):
+# # Create your tests here.
+# class Fitur3UnitTest(TestCase):
 
-	def test_fitur_3_url_exists(self):
-		response = Client().get('/fitur-3/')
-		self.assertEqual(response.status_code, 200)
+# 	def test_fitur_3_url_exists(self):
+# 		response = Client().get('/fitur-3/')
+# 		self.assertEqual(response.status_code, 200)
 
-	def test_fitur3_using_index_func(self):
-		found = resolve('/fitur-3/')
-		self.assertEqual(found.func, index)
+# 	def test_fitur3_using_index_func(self):
+# 		found = resolve('/fitur-3/')
+# 		self.assertEqual(found.func, index)
 
-	# def test_model_can_create_new_status(self):
- #        #Creating a new activity
-	# 	new_s = Status.objects.create(status='This is a test')
+# 	# def test_model_can_create_new_status(self):
+#  #        #Creating a new activity
+# 	# 	new_s = Status.objects.create(status='This is a test')
 
 	# 	#Retrieving all available activity
 	# 	counting_all_status= Status.objects.all().count()
