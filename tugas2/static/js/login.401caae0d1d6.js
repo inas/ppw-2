@@ -37,8 +37,6 @@ function displayProfileData(data){
     document.getElementById('loginPage').style.display='none';
     document.body.style.backgroundColor='#fafafa';
     document.body.style.marginTop="70px";
-
-    window.location.assign("/fitur-2")
     $('.navigation-list').append('<li id="#logoutBt"><a onclick="logout()">Log out</a></li>')
 
 }
@@ -49,3 +47,10 @@ function onError(error) {
 }
 
 // Destroy the session of linkedin
+function logout(){
+    IN.User.logout(removeProfileData);}
+
+// Remove profile data from page
+function removeProfileData(){
+    window.location.assign("{% url 'fitur-1:index'%}")
+}
