@@ -325,6 +325,48 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
   right: 0;
 }
 
+/*--------------NAV-------------*/
+
+#logoutBtn, #backBtn{
+  float: right;
+
+}
+
+#logoutBtn, #backBtn{
+  font-size: 0.8em;
+  height: 2em;
+  line-height: 1em;
+  color: white;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 1.6px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  padding: 0.4em;
+  margin-top: 0.25em;
+  margin-right: 0.5em;
+}
+
+#logoutBtn {
+  color: white;
+}
+
+#logoutBtn:hover , #backBtn:hover{
+  background: white;
+  color: black;
+  border: 3px solid white;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  text-decoration: none;
+}
+
+#logoutBtn:hover >a, #backBtn:hover >a{
+  color: black;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
 
 .section-title{
   margin-top: 0.2em;
