@@ -38,29 +38,6 @@ def dashboard(request, pengguna):
     html = 'fitur_3/fitur_3.html'
     return render(request, html, response)
 
-# def dashboard(request, id):
-# 	response['pengguna'] = id
-# 	message = Message.objects.filter(pengguna=pengguna)
-   
-# 	response['message'] = message
-# 	response['message_form'] = Message_Form
-# 	response["message_list"] = message
-# 	print(message)
-# 	html = 'fitur_3/fitur_3.html'
-
-# 	message_list = message
-# 	paginator = Paginator(message_list, 5)
-# 	page = request.GET.get('page', 1)
-# 	try:
-# 		users = paginator.page(page)
-# 	except PageNotAnInteger:
-# 		users = paginator.page(1)
-# 	except EmptyPage:
-# 		users = paginator.page(paginator.num_pages)
-   
-# 	response["message_list"] = users
-# 	html = 'fitur_3/fitur_3.html'
-# 	return render(request, html, response)
 
 def add_message(request):
 	form = Message_Form(None or request.POST )
