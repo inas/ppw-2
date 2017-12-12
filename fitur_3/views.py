@@ -55,6 +55,7 @@ def add_message(request):
 		return HttpResponseRedirect('/fitur-3/')
 
 def paginate_page(page, data_list):
+	
 	paginator = Paginator(data_list, 5)
 
 	try:
