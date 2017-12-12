@@ -1,0 +1,59 @@
+{% extends "fitur_3/layout/base.html" %}
+{% load staticfiles %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom: 0px; margin-top: 0px; background-color: #F1F7ED">
+  <div class="container">
+    <img class="rounded-circle" src="{% static 'image/forum.png' %}" alt="Generic placeholder image" style="width:270px;height:175px;">
+    <h1 class="display-3" style="font-family: Impact;">Forum Diskusi Lowongan</h1>
+    <h4 class="lead" style="fontfamily: Lucida">find jobs here</h4>
+  </div>
+</div>
+
+<section name="form">
+    <h2>Send Message</h2>
+    <form id="form" method="POST" action="{% url 'fitur-3:add_message'  %}">
+        {% csrf_token %}
+        {{ message_form }}
+        <br>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</section>
+<div class="list-group">
+{% if message_list %}
+         
+        {% for i in message_list %}
+        <a class="list-group-item clearfix"> 
+            {{i.title}} - {{i.message}} - {{i.created_date}} 
+        </a>        
+        {% endfor %}
+  
+{% else %}
+    <button type="submit" class="btn btn-primary btn-lg btn-block no-friend">You have no discussion.</button>
+{% endif %}
+</div>
+
+{% if message_list.has_other_pages %}
+    <ul class="pagination">
+        {% if message_list.has_previous %}
+            <li><a href="?page={{ message_list.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+
+        {% for i in message_list.paginator.page_range %}
+            {% if message_list.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if message_list.has_next %}
+              <li><a href="?page={{ message_list.next_page_number }}">&raquo;</a></li>
+        {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endif %}
+{% endblock %}
