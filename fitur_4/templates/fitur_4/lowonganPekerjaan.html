@@ -1,0 +1,50 @@
+<hr>
+	{% if contacts %}
+		{% for forum in company %}
+			<section name = "images" class = "col-sm-4" >
+				<a href="" title="">
+					<img src="">
+				</a>
+			</section>
+<section>
+	<div class = "list-group">
+		<div class="list-group-item clearfix">
+			<a href="{{forum.company_id}}">
+				{{forum.company_name}}
+			</a>
+			<br>
+			{{forum.company_id}}
+			<br>
+			{{forum.inputForum}}
+			<span class = "pull-right">
+				<textarea class="form-control">
+					
+				</textarea>
+				<br>
+				<button type="button" class="btn btn-success">
+					Submit
+				</button>
+			</span>
+		</div>
+		{% endfor %}
+		<div class="pagination">
+			<span class = "step-links">
+				{% if contacts.has_previous %}
+				<a href="?page={{ contacts.previous_page_number">
+					previous
+				</a>
+				{% endeif %}
+				<span class="current">
+					Page {{ contacts.number }} of {{contacts.paginator.num_pages}}.
+				</span>
+
+				{% if contacts.has_next %}
+					<a href="?page= {{ contacts.next_page_number }}">
+						next
+					</a>
+				{% endif %}
+			{% endif %}
+			</span>
+		</div>
+	</div>
+</section>
