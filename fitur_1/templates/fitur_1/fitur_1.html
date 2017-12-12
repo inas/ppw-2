@@ -9,10 +9,52 @@
 </head>
 <body >
   <!--PROFILE SECTION - SOON TO BE DELETED -->
-  <div class="main">
-    <section class="login_pages"><h2>Welcome to ......</h2></section>
-    <section class="login_pages"><h2>Find your dream jobs and seek out opportunities!</h2></section>
-    <section class="login_pages"><h2><script type="in/Login"></script></h2></section>
+  <div id="all"> 
+    <div id="profileData" style="display: none;">
+      <p><a href="javascript:void(0);" onclick="logout()">Logout</a></p>
+      <div id="picture"></div>
+      <div class="info">
+        <p id="name"></p>
+        <p id="intro"></p>
+        <p id="email"></p>
+        <p id="location"></p>
+        <p id="link"></p>
+      </div>
+      </div>
+  </div>
+  <div class="main" id="loginPage">
+    <section class="login_pages">
+      <h1>Welcome!</h1>
+      <h3>Find your dream jobs and seek out opportunities here.</h3>
+      <img src="https://image.flaticon.com/icons/svg/25/25623.svg"/>
+    </section>
+    <section class="login_pages job_listings">
+      <div class="row-list">
+        <div class="company-detail">
+            <img src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"/>
+            <h2>Twitter</h2>
+            <h4 style="text-transform: uppercase; letter-spacing: 4px;"> LATEST JOB LISTINGS: </h4>
+            <ol>
+                <li> Software Engineer </li> 
+                <li> Web Developer </li>
+            </ol>
+        </div>
+        <div class="company-detail">
+            <img src="https://www.shareicon.net/download/2015/09/12/99766_skype_512x512.png"/>
+            <h2>Skype</h2>
+            <h4 style="text-transform: uppercase; letter-spacing: 4px;"> LATEST JOB LISTINGS: </h4>
+            <ol>
+                <li> Software Engineer II </li> 
+                <li> Network Security Engineer </li>
+            </ol>
+        </div>
+      </div>  
+      <img src="https://image.flaticon.com/icons/svg/25/25623.svg"/>
+    </section>
+    <section class="login_pages">
+      <h1> Sign in with LinkedIn now to get started! </h1>
+      <h3><script type="in/Login"></script></h3>
+    </section>
     <!--<section class="cd-section visible">
     <div class="text-content">
       <h2>Page Scroll Effects</h2>
@@ -33,11 +75,6 @@
     </div>
   </section>-->
 </div>
-<script type="text/javascript">
-  function onLinkedInLoad() {
-        IN.Event.on(IN, "auth", window.location.replace('/fitur-2'));
-}
-</script>
 </body>
 
 {% endblock %}
