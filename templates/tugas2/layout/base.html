@@ -1,0 +1,52 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- BOOTSTRAP CSS // DO NOT REMOVE-->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<!-- LOAD FILE CSS MASING MASING DIBAWAH INI -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/fitur_1.css' %}" />
+		<!--css fitur 2-->
+		<!--css fitur 3-->
+		<!--css fitur 4-->
+
+		<script type="text/javascript" src="//platform.linkedin.com/in.js">
+		      api_key: 81r7kes16gs6cg
+		      authorize: true
+		      onLoad: onLinkedInLoad
+		      scope: r_basicprofile r_emailaddress
+		</script>
+	</head>
+	<body>
+		<header>
+   			{% include "tugas2/partials/header.html" %}
+		</header>
+		<content>
+			    {% block content %}
+    			<!-- Your Content Here -->
+    			{% endblock %}
+		</content>
+	<!-- LOAD SEMUA SCRIPT YANG DIBUTUHKAN DIBAWAH INI-->
+	<!-- Bootstrap script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- SCRIPT FITUR 1 -->
+	<script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{% static 'js/velocity.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/velocity.ui.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+	<!--SCRIPT FITUR 2-->
+
+
+	<!--SCRIPT FITUR 3-->
+
+
+	<!--SCRIPT FITUR 4-->
+
+	
+	</body>
+</html>
+

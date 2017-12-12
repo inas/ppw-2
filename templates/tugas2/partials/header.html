@@ -1,0 +1,93 @@
+<style>
+/*========================================== INI BUAT NAVBAR, COPAS YANG INI YA ============================================= */
+/*========================================== INI BUAT NAVBAR, COPAS YANG INI YA ============================================= */
+/*========================================== INI BUAT NAVBAR, COPAS YANG INI YA ============================================= */
+/*========================================== INI BUAT NAVBAR, COPAS YANG INI YA ============================================= */
+
+body{
+    margin-top: 70px;
+    font-family: 'Cabin', sans-serif;
+}
+
+nav{
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.navbar-default {
+    background-color: #fafafa;
+    border:none;
+}
+
+/* LINK COLOUR LMAOOOO*/
+.navbar-default .navbar-nav > li > a {
+    color:#f1c40f;
+    text-decoration: none;
+}
+
+.navbar-default .navbar-brand{
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:active {
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+ul a {
+    position: relative;
+    display: block;
+    padding: 16px 0;
+    margin: 0 12px;
+    line-height: 16px;
+    transition: color 0.1s,background-color 0.3s,padding 0.2s ease-in;
+}
+ul a::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #9b59b6;  /*UNDERLINES COLOUR*/
+    transform-origin: right top;
+    transform: scale(0, 1);
+    transition: color 0.1s,transform 0.3s ease-out;
+}
+ul a:active::before {
+    background-color: #9b59b6;
+}
+ul a:hover::before, ul a:focus::before {
+    transform-origin: left top;
+    transform: scale(1, 1);
+}
+
+/* ===================================================== NAVBAR DONE HERE ==========================================================*/
+/* ===================================================== NAVBAR DONE HERE ==========================================================*/
+/* ===================================================== NAVBAR DONE HERE ==========================================================*/
+/* ===================================================== NAVBAR DONE HERE ==========================================================*/
+
+</style>
+
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"> PPWC-10 </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navigation-list">
+        <li><a href="{% url 'fitur-1:index' %}">Home</a></li>
+        <li><a href="{% url 'fitur-2:index' %}">Index</a></li>
+      </ul>
+    </div>
+  </div>
