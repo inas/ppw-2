@@ -1,6 +1,31 @@
+/*======================================== CUSTOM MADE ========================================*/
+.main .login_pages{
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.login_pages:nth-child(2) {
+    background: #f1c40f;
+}
+
+.login_pages:nth-child(3) {
+    background: #9b59b6;
+}
+
+.login_pages:nth-child(4) {
+    background: #ecf0f1;
+}
+.login_pages:first-child {
+    background: #FA8072;
+}
+
+
+/*============================================================================================*/
+
 body, html {
   margin: 0;
-  margin-top: 70px;
+  margin-top: 25px;
   overflow: hidden;
   -webkit-transition: opacity 400ms;
   -moz-transition: opacity 400ms;
