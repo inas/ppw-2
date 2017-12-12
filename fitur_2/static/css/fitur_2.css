@@ -225,7 +225,8 @@ header {
 }
 
 .main section.page1 {
-  background-color: #E76C67;
+  background: -webkit-linear-gradient(bottom, #9b59b6 0%,#e4405f 99%);
+  background: linear-gradient(to bottom, #9b59b6 0%,#e4405f 99%);
 }
 
 .main section .page_container .btns {
@@ -238,7 +239,8 @@ header {
   text-align: center;
 }
 .main section.page2 {
-  background-color: #F4726D;
+  background: -webkit-linear-gradient(top, #e4405f 1%,#f1c40f 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #e4405f 1%,#f1c40f 100%);
 }
 .main section.page2 > img {
   position: absolute;
@@ -269,9 +271,13 @@ header {
   color: #FFF;
   }
 .main section.page3 {
-  background-color: #E76C67;
+  background: -webkit-linear-gradient(top, #f1c40f 0%,#46f4b5 99%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #f1c40f 0%,#46f4b5 99%);
 }
-
+.main section.page4 {
+  background: -webkit-linear-gradient(top, #46f4b5 1%,#970ec9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #46f4b5 1%,#970ec9 100%);
+}
 body.disabled-onepage-scroll .onepage-wrapper  section {
   min-height: 100%;
   height: auto;
@@ -339,6 +345,9 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
    padding: 1em;
 }
 
+#home a{
+  text-decoration: none;
+}
 .ghost-button {
   text-decoration: none;   
   margin: 1em;
@@ -361,7 +370,7 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 .ghost-button:hover,
 .ghost-button:active{
   background-color: #fff;
-  color: black;
+  color: #bf4d8b;
   transition: background-color 0.3s ease-in,
               color 0.3s ease-in;
 }
