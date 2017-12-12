@@ -1,4 +1,5 @@
 function onLinkedInLoad() {
+    alert("here");
     IN.Event.on(IN, "auth", getProfileData);
 }
 
