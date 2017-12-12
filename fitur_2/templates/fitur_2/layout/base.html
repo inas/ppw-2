@@ -1,3 +1,4 @@
+{% extends "../../tugas2/layout/base.html" %}
 {% load staticfiles %}
 {% load static %}
 <!DOCTYPE html>
@@ -5,14 +6,11 @@
 <head>
   <meta charset="utf-8">
   <title>PROFILE</title>
-  <meta name="title" content="Vertical Dot avigation Styles + One Page Scroll" />
+  <meta name="title" content="" />
   <meta name="description" content="Create a one page scroller website with awesome vertical dot navigation styles." />
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/onepage-scroll.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
-  <link rel="stylesheet" type="text/css" href="{% static 'css/fitur_2.css' %}" />
   <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
 </head>
 <body>
@@ -30,10 +28,6 @@
        {% include "fitur_2/partials/footer.html" %}
        {% endblock %}
    </footer>
-  
-   <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
-   <script type="text/javascript" src="{% static 'js/jquery.onepage-scroll.js' %}"></script>
-   <script src="{% static 'js/fitur_2.js' %}"></script>
    {% block javascript %}
    {% endblock %}
 </body>

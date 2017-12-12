@@ -1,7 +1,3 @@
-function onLinkedInLoad() {
-    IN.Event.on(IN, "auth", getProfileData);
-}
-
 // Use the API call wrapper to request the member's profile data
 function getProfileData() {
     IN.API.Profile("me").fields("id", "first-name", "last-name", "headline", "location", "picture-url", "public-profile-url", "email-address").result(displayProfileData).error(onError);
@@ -44,5 +40,5 @@ function logout(){
 
 // Remove profile data from page
 function removeProfileData(){
-    window.location='/fitur-1'
+    window.location.replace('/fitur-1')
     }

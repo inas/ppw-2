@@ -2,6 +2,11 @@
 {% load staticfiles %}
 {% load static %}
 {% block content %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/onepage-scroll.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/fitur_2.css' %}" />
+</head>
 <div class="wrapper">
  <div class="main">
     <section class="page1">
@@ -25,7 +30,7 @@
     <section class="page2">
       <div class="page_container">
          <div id="about">
-            <div class="about-label">
+            <div class="about-label section-title">
                |About
             </div>
             <div class="about-content">
@@ -53,7 +58,7 @@
     <section class="page3">
        <div class="page_container">
           <div id="specialities">
-            <div class="specialities-label">
+            <div class="specialities-label section-title">
                |Specialities
             </div>
             <div class="specialities-container">
@@ -81,9 +86,9 @@
     </section>
 
     <section class="page4">
-      <div class="page_container">
+      <div class="page_container section-title">
         <div id="contact">
-          <div class="contact-label">
+          <div class="contact-label section-title">
             |Contact
           </div>
           <div class="contact-container">
@@ -106,4 +111,12 @@
     </section>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(() => {
+        $(".navigation-list").append(
+            '<li><a onClick="logout()">Logout</a></li>'
+        )
+    })
+</script>
 {% endblock %}

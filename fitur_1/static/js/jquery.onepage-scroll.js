@@ -1,5 +1,5 @@
 /* ===========================================================
- * jquery-onepage-scroll.js v1.3
+ * jquery-onepage-scroll.js v1.3.1
  * ===========================================================
  * Copyright 2013 Pete Rojwongsuriya.
  * http://www.thepetedesign.com
@@ -17,7 +17,6 @@
 !function($){
 
   var defaults = {
-  	dotstyle: "fillup",
     sectionContainer: "section",
     easing: "ease",
     animationTime: 1000,
@@ -95,16 +94,29 @@
 
     $.fn.transformPage = function(settings, pos, index) {
       if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
-      $(this).css({
-        "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-        "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
-        "-moz-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-        "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
-        "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-        "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
-        "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-        "transition": "all " + settings.animationTime + "ms " + settings.easing
-      });
+
+      // Just a simple edit that makes use of modernizr to detect an IE8 browser and changes the transform method into
+    	// an top animate so IE8 users can also use this script.
+    	if($('html').hasClass('ie8')){
+        if (settings.direction == 'horizontal') {
+          var toppos = (el.width()/100)*pos;
+          $(this).animate({left: toppos+'px'},settings.animationTime);
+        } else {
+          var toppos = (el.height()/100)*pos;
+          $(this).animate({top: toppos+'px'},settings.animationTime);
+        }
+    	} else{
+    	  $(this).css({
+    	    "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
+         "-moz-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
+         "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
+         "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
+         "transition": "all " + settings.animationTime + "ms " + settings.easing
+    	  });
+    	}
       $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
         if (typeof settings.afterMove == 'function') settings.afterMove(index);
       });
@@ -112,7 +124,7 @@
 
     $.fn.moveDown = function() {
       var el = $(this)
-      index = $(settings.sectionContainer +".current").data("index");
+      index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
       next = $(settings.sectionContainer + "[data-index='" + (index + 1) + "']");
       if(next.length < 1) {
@@ -127,11 +139,11 @@
         pos = (index * 100) * -1;
       }
       if (typeof settings.beforeMove == 'function') settings.beforeMove( next.data("index"));
-      current.removeClass("current")
-      next.addClass("current");
+      current.removeClass("active")
+      next.addClass("active");
       if(settings.pagination == true) {
-        $(".onepage-pagination li" + "[data-index='" + index + "']").removeClass("current");
-        $(".onepage-pagination li" + "[data-index='" + next.data("index") + "']").addClass("current");
+        $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
+        $(".onepage-pagination li a" + "[data-index='" + next.data("index") + "']").addClass("active");
       }
 
       $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
@@ -146,7 +158,7 @@
 
     $.fn.moveUp = function() {
       var el = $(this)
-      index = $(settings.sectionContainer +".current").data("index");
+      index = $(settings.sectionContainer +".active").data("index");
       current = $(settings.sectionContainer + "[data-index='" + index + "']");
       next = $(settings.sectionContainer + "[data-index='" + (index - 1) + "']");
 
@@ -162,11 +174,11 @@
         pos = ((next.data("index") - 1) * 100) * -1;
       }
       if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
-      current.removeClass("current")
-      next.addClass("current")
+      current.removeClass("active")
+      next.addClass("active")
       if(settings.pagination == true) {
-        $(".onepage-pagination li" + "[data-index='" + index + "']").removeClass("current");
-        $(".onepage-pagination li" + "[data-index='" + next.data("index") + "']").addClass("current");
+        $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
+        $(".onepage-pagination li a" + "[data-index='" + next.data("index") + "']").addClass("active");
       }
       $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
       $("body").addClass("viewing-page-"+next.data("index"))
@@ -179,14 +191,14 @@
     }
 
     $.fn.moveTo = function(page_index) {
-      current = $(settings.sectionContainer + ".current")
+      current = $(settings.sectionContainer + ".active")
       next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
       if(next.length > 0) {
         if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
-        current.removeClass("current")
-        next.addClass("current")
-        $(".onepage-pagination li" + ".current").removeClass("current");
-        $(".onepage-pagination li" + "[data-index='" + (page_index) + "']").addClass("current");
+        current.removeClass("active")
+        next.addClass("active")
+        $(".onepage-pagination li a" + ".active").removeClass("active");
+        $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
         $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
         $("body").addClass("viewing-page-"+next.data("index"))
 
@@ -293,7 +305,7 @@
 
 
       if(settings.pagination == true) {
-        paginationList += "<li data-index='"+(i+1)+"' href='#" + (i+1) + "'><a></a></li>"
+        paginationList += "<li><a data-index='"+(i+1)+"' href='#" + (i+1) + "'></a></li>"
       }
     });
 
@@ -307,7 +319,7 @@
 
     // Create Pagination and Display Them
     if (settings.pagination == true) {
-      if ($('ul.onepage-pagination.dotstyle.dotstyle-' + settings.dotstyle).length < 1) $("<ul class='onepage-pagination dotstyle dotstyle-"+settings.dotstyle+"'></ul>").prependTo("body");
+      if ($('ul.onepage-pagination').length < 1) $("<ul class='onepage-pagination'></ul>").prependTo("body");
 
       if( settings.direction == 'horizontal' ) {
         posLeft = (el.find(".onepage-pagination").width() / 2) * -1;
@@ -323,14 +335,14 @@
       init_index =  window.location.hash.replace("#", "")
 
       if (parseInt(init_index) <= total && parseInt(init_index) > 0) {
-        $(settings.sectionContainer + "[data-index='" + init_index + "']").addClass("current")
+        $(settings.sectionContainer + "[data-index='" + init_index + "']").addClass("active")
         $("body").addClass("viewing-page-"+ init_index)
-        if(settings.pagination == true) $(".onepage-pagination li" + "[data-index='" + init_index + "']").addClass("current");
+        if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + init_index + "']").addClass("active");
 
         next = $(settings.sectionContainer + "[data-index='" + (init_index) + "']");
         if(next) {
-          next.addClass("current")
-          if(settings.pagination == true) $(".onepage-pagination li" + "[data-index='" + (init_index) + "']").addClass("current");
+          next.addClass("active")
+          if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + (init_index) + "']").addClass("active");
           $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
           $("body").addClass("viewing-page-"+next.data("index"))
           if (history.replaceState && settings.updateURL == true) {
@@ -341,18 +353,18 @@
         pos = ((init_index - 1) * 100) * -1;
         el.transformPage(settings, pos, init_index);
       } else {
-        $(settings.sectionContainer + "[data-index='1']").addClass("current")
+        $(settings.sectionContainer + "[data-index='1']").addClass("active")
         $("body").addClass("viewing-page-1")
-        if(settings.pagination == true) $(".onepage-pagination li" + "[data-index='1']").addClass("current");
+        if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
       }
     }else{
-      $(settings.sectionContainer + "[data-index='1']").addClass("current")
+      $(settings.sectionContainer + "[data-index='1']").addClass("active")
       $("body").addClass("viewing-page-1")
-      if(settings.pagination == true) $(".onepage-pagination li" + "[data-index='1']").addClass("current");
+      if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
     }
 
     if(settings.pagination == true)  {
-      $(".onepage-pagination li").click(function (){
+      $(".onepage-pagination li a").click(function (){
         var page_index = $(this).data("index");
         el.moveTo(page_index);
       });
@@ -378,29 +390,31 @@
       $(document).keydown(function(e) {
         var tag = e.target.tagName.toLowerCase();
 
-        switch(e.which) {
-          case 38:
-            if (tag != 'input' && tag != 'textarea') el.moveUp()
-          break;
-          case 40:
-            if (tag != 'input' && tag != 'textarea')
-              el.moveDown()
-              print("iyaaaaaaaaaaaaaaa")
-          break;
-          case 33: //pageg up
-            if (tag != 'input' && tag != 'textarea') el.moveUp()
-          break;
-          case 34: //page dwn
-            if (tag != 'input' && tag != 'textarea') el.moveDown()
-          break;
-          case 36: //home
-            el.moveTo(1);
-          break;
-          case 35: //end
-            el.moveTo(total);
-          break;
-          default: return;
-          
+        if (!$("body").hasClass("disabled-onepage-scroll")) {
+          switch(e.which) {
+            case 38:
+              if (tag != 'input' && tag != 'textarea') el.moveUp()
+            break;
+            case 40:
+              if (tag != 'input' && tag != 'textarea') el.moveDown()
+            break;
+            case 32: //spacebar
+              if (tag != 'input' && tag != 'textarea') el.moveDown()
+            break;
+            case 33: //pageg up
+              if (tag != 'input' && tag != 'textarea') el.moveUp()
+            break;
+            case 34: //page dwn
+              if (tag != 'input' && tag != 'textarea') el.moveDown()
+            break;
+            case 36: //home
+              el.moveTo(1);
+            break;
+            case 35: //end
+              el.moveTo(total);
+            break;
+            default: return;
+          }
         }
 
       });
@@ -410,4 +424,3 @@
 
 
 }(window.jQuery);
-
