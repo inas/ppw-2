@@ -2,10 +2,11 @@ html {
   height: 100%;
 }
 body {
+  
   background: #E2E4E7;
   padding: 0;
   text-align: center;
-  font-family: 'Montserrat', 'sans-serif';
+  font-family: 'Hind', 'sans-serif';
   position: relative;
   margin: 0;
   height: 100%;
@@ -325,8 +326,52 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
   right: 0;
 }
 
+/*--------------NAV-------------*/
 
-/*navbar*/
+#logoutBtn, #backBtn{
+  float: right;
+
+}
+
+#logoutBtn, #backBtn{
+  font-size: 0.8em;
+  height: 2em;
+  line-height: 1em;
+  color: white;
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 1.6px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  padding: 0.4em;
+  margin-top: 0.25em;
+  margin-right: 0.5em;
+}
+
+#logoutBtn {
+  color: white;
+}
+
+#logoutBtn:hover , #backBtn:hover{
+  background: white;
+  color: black;
+  border: 3px solid white;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  text-decoration: none;
+}
+
+#logoutBtn:hover >a, #backBtn:hover >a{
+  color: black;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+.section-title{
+  margin-top: 0.2em;
+}
 
 .this-is {
     font-size: 1.5em;
@@ -335,6 +380,7 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 #home .get-name{
    font-size: 5em;
    line-height: 1em;
+   font-family: Oswald;
 }
 
 #home .buttons {
@@ -379,6 +425,7 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 #about .about-label {
   font-size: 2.5em;
   text-align: left;
+  margin: 0.3em;
 }
 
 #about .about-content{
@@ -389,6 +436,11 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
    justify-content: center;
    flex-wrap: wrap;
    align-items: stretch;
+}
+
+#about .get-company-type {
+  font-style: italic;
+  font-weight: bold;
 }
 
 #about .about-content div {
@@ -415,13 +467,14 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
     line-height: 1em;
     text-align: left;
     white-space: nowrap;
-    margin: 0em;
+    margin: 0.1em;
+    font-family: Oswald;
 }
 
 
 #about .about-content .about-text .get-company-type{
       font-size: 1.4em;
-      color: white;
+      color: black;
       line-height: 1em;
       text-align: left;
 }
@@ -462,6 +515,8 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 #specialities .specialities-container{
    margin-left: 1em;
    margin-right: 1em;
+   margin-top: 1em;
+   font-family: Oswald;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
@@ -475,7 +530,11 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
    color: white;
    width: 31vh;
    height: 31vh;
-   margin: 1em;
+   margin: 0.3em;
+   font-size: 1.5em; 
+   text-align: center;
+  vertical-align: middle;
+  line-height: 31vh;
 }
 
 #contact .contact-label {
@@ -494,9 +553,10 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 }
 
 #contact .contact-container .visit-label {
-  font-size: 1.5em;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
+  font-size: 2.3em;
+  font-family: Oswald;
+  margin-top: 0.7em;
+  margin-bottom: 0.3em;
 }
 #contact div {
   text-align: center;
@@ -510,12 +570,16 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 
 #contact .contact-container .loc img{
   width: 3em;
+  margin: 1em;
 }
 
 #contact .ghost-button{
   margin-top: 0;
 }
 
+#contact .address{
+  font-size: 1.2em;
+}
 @media only screen and (max-width: 685px) {
 
   #about .about-content .pic-name #get-pic img{
@@ -602,8 +666,8 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
   #specialities .specialities-container div{
      background-color: black;
      color: white;
-     width: 35vw;
-     height: 35vw;
+     width: 50vw;
+     height: 50vw;
      margin: 0.3em;
   }
 

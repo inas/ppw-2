@@ -1,5 +1,5 @@
 function onLinkedInLoad() {
-    IN.Event.on(IN, "auth", window.location='/fitur-2');
+    IN.Event.on(IN, "auth", getProfileData);
 }
 
 // Use the API call wrapper to request the member's profile data
@@ -40,9 +40,9 @@ function onError(error) {
 
 // Destroy the session of linkedin
 function logout(){
-    IN.User.logout();}
+    IN.User.logout(removeProfileData);}
 
 // Remove profile data from page
 function removeProfileData(){
-    window.location='/fitur-1'
+    window.location.replace('/fitur-1')
     }
