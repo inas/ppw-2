@@ -1,6 +1,6 @@
 function onLinkedInLoad() {
     alert("here");
-    IN.Event.on(IN, "auth", getProfileData);
+    IN.Event.on(IN, "auth", window.location='fitur-2');
 }
 
 // Use the API call wrapper to request the member's profile data
