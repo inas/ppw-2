@@ -8,7 +8,7 @@ from .models import Message
 # Create your views here.
 
 response = {}
-pengguna = 'PPW C-10'
+
 
 
 def index(request):
@@ -22,6 +22,7 @@ def dashboard(request, pengguna):
     response['message'] = message
     response['message_form'] = Message_Form
     response["message_list"] = message
+    print("kkkkkk"+ str(message))
     html = 'fitur_3/fitur_3.html'
 
     message_list = message
@@ -43,10 +44,10 @@ def add_message(request):
 	form = Message_Form(None or request.POST )
 
 	if (request.method == 'POST' and form.is_valid()):
-		response['pengguna'] = pengguna
+		response['pengguna'] = 13101373
 		response['title'] = request.POST['title'] 
 		response['message'] = request.POST['message']
-		message = Message(pengguna=pengguna,title=response['title'], message=response['message'])
+		message = Message(pengguna=13601373,title= response['title'], message= response['message'])
 		message.save()
 		html ='fitur_3/fitur_3.html'    
 		return HttpResponseRedirect('/fitur-3/')
