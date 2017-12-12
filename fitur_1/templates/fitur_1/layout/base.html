@@ -1,3 +1,4 @@
+{% extends "../../tugas2/layout/base.html" %}
 {% load staticfiles %}
 {% load static %}
 <!DOCTYPE html>
@@ -6,17 +7,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- bootstrap csss -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/fitur_1.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
 </head>
 <style type="text/css">
 </style>
 <body>
 <header>
-   {% include "fitur_1/partials/header.html" %}
-    <!-- Your Header Here -->
+    
 </header>
 <content>
     {% block content %}
@@ -28,12 +25,5 @@
     {% block footer %}
     {% endblock %}
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="{% static 'js/velocity.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/velocity.ui.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
