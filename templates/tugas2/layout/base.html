@@ -34,8 +34,19 @@
 	<script type="application/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{% static 'js/scroll.js' %}"></script>
 <!-- jadiiiiiiiii scriptnya ngambil punya sheila karena methodnya sama, terus kalo scroll dimasukkin punya hseila jadi bagus punya gue jadi aneeh -->
-	<script type="text/javascript" src="{% static 'js/login.js' %}"></script>
+	<script type="text/javascript">
+		function logout(){
+    IN.User.logout(removeProfileData);}
 
+
+// Remove profile data from page
+function removeProfileData(){
+    window.location.assign("/fitur-1")
+    $.ajax({
+    method:"GET", url: 'fitur-1/remove-session/'
+    })
+}
+	</script>
 	</body>
 </html>
 

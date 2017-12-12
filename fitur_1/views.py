@@ -10,7 +10,7 @@ def index(request):
 	html1 = 'fitur_1/fitur_1.html'
 	return render(request, html1, response)
 
-'''def add_session(request):
+def add_session(request):
     if request.method == 'POST':
         name = request.POST['name']
         id = request.POST['id']
@@ -27,4 +27,4 @@ def index(request):
 
 def remove_session(request):
     request.session.flush()
-    return HttpResponseRedirect(reverse('fitur-2:index'))'''
+    return HttpResponseRedirect(reverse('fitur-2:index'))
