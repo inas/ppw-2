@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'fitur_1',
     'fitur_2',
     'fitur_3',
-    # 'fitur_4',
+    'fitur_4',
 ]
 
 MIDDLEWARE = [
