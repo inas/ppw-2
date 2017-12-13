@@ -1,17 +1,18 @@
 from django.shortcuts import render
+from .forms import Message_Form
+from .models import Tanggapan
 
-# Create your views here.
-# def message_post(request):
-#     form = Message_Form(request.POST or None)
-#     if(request.method == 'POST' and form.is_valid()):
-#         response['message'] = request.POST['message']
-#         message = Message(name=response['name'], email=response['email'],
-#                           message=response['message'])
-#         message.save()
-#         html ='fitur/form_result.html'
-#         return render(request, html, response)
-#     else:        
-#         return HttpResponseRedirect('/fitur-1/')
-
-# def pagination :
+def add_tanggapan(request):
+	tanggapan_all=reversed(Tanggapan.objects.all())
+	response['description'] = tanggapan_all
+	html = 'fitur_4/fitur_4.html'
+	response['message_form'] = Message_Form
+	form = Message_Form(request.POST or None)
+	if(request.method == 'POST' and form.is_valid()):
+		response['description'] = request.POST['description']
+		tanggapan_all = Tanggapan(tanggapanTwitter=response['description'], tanggapanSkype=response['description'], created_date_Twitter = datetime.now(), created_date_Skype=datetime.now())
+		tanggapan_all.save()
+		return HttpResponseRedirect('/fitur-1/')
+	else:
+		return HttpResponseRedirect('/fitur-1/')
 

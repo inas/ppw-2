@@ -8,6 +8,7 @@ from .models import Message
 # Create your views here.
 
 response = {}
+# hahah
 
 def index(request):
 	response['author']= "Widya Syafira"

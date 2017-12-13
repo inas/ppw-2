@@ -1,10 +1,10 @@
 from django.conf.urls import url
-from .views import message_post
+from .views import add_tanggapan
 
 
 
-urlpatterns = [
+ urlpatterns = [
 
-    url(r'^add_message', message_post, name='add_message'),
+     url(r'add_tanggapan/$', add_tanggapan, name='add_tanggapan'),
 
  ]
