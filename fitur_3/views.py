@@ -9,12 +9,11 @@ from .models import Message
 
 response = {}
 
-
-
 def index(request):
 	response['author']= "Widya Syafira"
 	html = 'fitur_3/fitur_3.html'
-	return render(request, html, response)
+	return HttpResponseRedirect('/fitur-3/dashboard/13601373')
+	#return render(request, html, response)
 
 def dashboard(request, pengguna):
     message = Message.objects.filter(pengguna=pengguna)
@@ -22,7 +21,7 @@ def dashboard(request, pengguna):
     response['message'] = message
     response['message_form'] = Message_Form
     response["message_list"] = message
-    print("kkkkkk"+ str(message))
+    # print("kkkkkk"+ str(message))
     html = 'fitur_3/fitur_3.html'
 
     message_list = message
@@ -55,6 +54,7 @@ def add_message(request):
 		return HttpResponseRedirect('/fitur-3/')
 
 def paginate_page(page, data_list):
+
 	paginator = Paginator(data_list, 5)
 
 	try:
