@@ -19,7 +19,7 @@ from django.views.generic import RedirectView
 import fitur_1.urls as fitur_1
 import fitur_2.urls as fitur_2
 import fitur_3.urls as fitur_3
-# import fitur_4.urls as fitur_4
+import fitur_4.urls as fitur_4
 
 
 urlpatterns = [
@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^fitur-1/', include(fitur_1, namespace='fitur-1')),
     url(r'^fitur-2/', include(fitur_2,namespace='fitur-2')),
     url(r'^fitur-3/', include(fitur_3,namespace='fitur-3')),
-	# url(r'^fitur-4/', include(fitur_4,namespace='fitur-4')),
+	url(r'^fitur-4/', include(fitur_4,namespace='fitur-4')),
 	url(r'^$', RedirectView.as_view(url='fitur-1/'))
 ]

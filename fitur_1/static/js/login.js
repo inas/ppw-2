@@ -26,26 +26,94 @@ function displayProfileData(data){
                 success : function(){},
                 error : function(error){}
             });
-        });
-    document.getElementById("picture").innerHTML = '<img src="'+user.pictureUrl+'" />';
-    document.getElementById("name").innerHTML = user.firstName+' '+user.lastName;
-    document.getElementById("intro").innerHTML = user.headline;
-    document.getElementById("email").innerHTML = user.emailAddress;
-    document.getElementById("location").innerHTML = user.location.name;
-    document.getElementById("link").innerHTML = '<a href="'+user.publicProfileUrl+'" target="_blank">Visit profile</a>';
-    document.getElementById('profileData').style.display = 'block';
-    document.getElementById('loginPage').style.display='none';
-    document.body.style.backgroundColor='#fafafa';
-    document.body.style.marginTop="70px";
+            getProfileCompanyData
 
+});
     window.location.assign("/fitur-2")
     $('.navigation-list').append('<li id="#logoutBt"><a onclick="logout()">Log out</a></li>')
+}
 
+function shareContent() {
+    
+// Build the JSON payload containing the content to be shared
+var payload = { 
+    "comment": "Check out developer.linkedin.com! http://linkd.in/1FC2PyG", 
+    "visibility": { 
+    "code": "anyone"
+    } 
+};
+
+var cpnyID = 13601373;
+
+IN.API.Raw("/companies/" + cpnyID + "/shares?format=json")
+    .method("POST")
+    .body(JSON.stringify(payload))
+    .result(onSuccess)
+    .error(onError);
+  }
+ 
+getProfileCompanyData = (data)=>{
+    comp = data.values
+    company_id = comp[0].id
+    IN.API.Raw('companies/'+comp[0].id+':(id,name,email-domains,company-type,industries,twitter-id,website-url,logo-url,employee-count-range,specialties,locations,description,founded-year,num-followers)?format=json')
+        .method('GET')
+        .result(postProfileCompanyData)
+
+}
+
+openProfile= (id)=>{
+    console.log(id)
+    window.open('/profil/'+id+'/', '_self')
+}
+
+postProfileCompanyData=(data)=>{
+    console.log(data)
+    id = data.id
+    name = data.name
+    email = data.emailDomains
+    com_type = data.companyType.name
+    industri = data.industries.values[0].name
+    website = data.websiteUrl
+    logo_url = data.logoUrl
+    console.log(logo_url)
+    size = data.employeeCountRange.name
+    desc = data.description
+    founded_year = data.foundedYear
+    followers = data.numFollowers
+    city = data.locations.values[0].address.street1
+    alert("bentar")
+    $.ajax({
+        method: "POST",
+        url: '/profil/add-company/',
+        data: {
+            id: id,
+            name:name,
+            email:email,
+            com_type:com_type,
+            industri:industri,
+            website:website,
+            logo_url:logo_url,
+            size:size,
+            desc:desc,
+            founded_year:founded_year,
+            followers:followers,
+            city:city,
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        },
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function (id){
+            openProfile(id)
+        },
+        error: function (error){
+            console.log(error)
+        }
+
+    })
 }
 
 // Handle an error response from the API call
 function onError(error) {
     console.log(error);
 }
-
-// Destroy the session of linkedin
