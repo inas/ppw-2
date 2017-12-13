@@ -10,7 +10,7 @@ class Message_Form(forms.Form):
         'cols': 70,
         'rows': 4,
         'class': 'todo-status-textarea',
-        'placeholder':'masukkan tanggapan'
+        'placeholder':'masukkan tanggapan',
     }
 
     description = forms.CharField(label='', required=True, widget=forms.Textarea(attrs=description_attrs))
