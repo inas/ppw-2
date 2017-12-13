@@ -4,6 +4,7 @@ from .models import Tanggapan
 from django.test import Client
 from django.urls import resolve
 from .views import add_tanggapan
+from datetime import datetime
 
 class Fitur1UnitTest(TestCase):
 
@@ -12,7 +13,7 @@ class Fitur1UnitTest(TestCase):
 		new_s = Tanggapan.objects.create(tanggapanTwitter="halo", tanggapanSkype="hai", created_date_Twitter = datetime.now(), created_date_Skype=datetime.now())
 
 		#Retrieving all available activity
-		counting_all_status= Status.objects.all().count()
+		counting_all_status= Tanggapan.objects.all().count()
 		self.assertEqual(counting_all_status,1)
 
 	def test_form_status_input_has_placeholder_and_css_classes(self):
