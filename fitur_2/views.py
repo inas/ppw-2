@@ -16,16 +16,18 @@ def index(request):
 	# ## end of sol
 
 	# set_data_for_session(response, request)
-	print('user_login' in request.session)
-	if('user_login' in request.session):
-		print("udah login")
-		try:
-			response['name'] = request.session.get('name')
-			if(response['name']==None):
-				raise KeyError
-		except KeyError:
-			get_data(request)
+	# print('user_login' in request.session)
+	# if('user_login' in request.session):
+	# 	print("udah login")
+	# 	try:
+	# 		response['name'] = request.session.get('name')
+	# 		if(response['name']==None):
+	# 			raise KeyError
+	# 	except KeyError:
+	# 		get_data(request)
 
-		return render(request, html, response)
-	else:
-		return HttpResponseRedirect('../fitur-1/')
+	# 	return render(request, html, response)
+	# else:
+	# 	return HttpResponseRedirect('../fitur-1/')
+
+	return render(request, html, response)

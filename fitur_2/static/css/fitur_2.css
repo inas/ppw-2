@@ -526,15 +526,16 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 }
 
 #specialities .specialities-container div{
-   background-color: black;
-   color: white;
-   width: 31vh;
-   height: 31vh;
-   margin: 0.3em;
-   font-size: 1.5em; 
-   text-align: center;
+  background-color: black;
+  color: white;
+  width: 31vh;
+  height: 31vh;
+  margin: 0.3em;
+  font-size: 1.5em;
+  text-align: center;
   vertical-align: middle;
   line-height: 31vh;
+  border: 4px solid;
 }
 
 #contact .contact-label {
