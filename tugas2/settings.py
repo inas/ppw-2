@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!!m0+8h7(vgb$^1d8l04k0qs0a!v6cbi@(bz6*l43t+3heoura'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =True
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,7 +136,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
+
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'

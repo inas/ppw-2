@@ -1,13 +1,66 @@
-<div>
-	<p align="center"><img src = "https://upload.wikimedia.org/wikipedia/id/thumb/9/95/Makara_UI.png/200px-Makara_UI.png"></p>
-	<p align="center">
-	<button align = "center" type="submit" class="btn btn-default">Submit</button>
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#statusModal">Tanggapan Lowongan Pekerjaan</button> 
 
-	</p>
-	<p align="center"> 
-		<h2>
-			Perusahaan PPW C 10
-		</h2>
-	</p>
+ <div id="statusModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Tanggapan Lowongan Pekerjaan</h4>
+        </div>
+        <div class="modal-body">
+        	<form id="form" method="POST" action='/add'>
+	            {% csrf_token %}
+	            {{ message_form }}
+	            <input id="submit" type="submit" class="btn btn-lg btn-block btn-primary" value="Post">
+        	</form>
 
-</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        <div>
+            
+        </div>
+      </div>
+      
+    
+
+		<!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        <div class="container">
+        <div class="flex">
+            {% if description %}
+                {% for data in description %}
+                    <div class="flex-item">
+                        <div class="center status-item">
+                        	<div class="profimage">
+                        		<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/>
+                        	</div>
+                            <div class="status-date">
+                                {{data.created_date_Skype}}
+                            </div>
+                            <div class="status-content">
+                                {{data.tanggapanSkype}}
+                            </div>
+                            <div class="status-date">
+                                {{data.created_date_Twitter}}
+                            </div>
+                            <div class="status-content">
+                                {{data.tanggapanTwitter}}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <div class="alert alert-danger text-center">
+                <strong>Oops!</strong> Tidak ada tanggapan.
+            </div>
+            {% endif %}
+        </div>
+    	</div>
+      </div>      
+    </div>
+</div> -->
