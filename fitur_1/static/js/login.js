@@ -55,7 +55,7 @@ IN.API.Raw("/companies/" + cpnyID + "/shares?format=json")
 getProfileCompanyData = (data)=>{
     comp = data.values
     company_id = comp[0].id
-    IN.API.Raw('companies/'+comp[0].id+':(id,name,email-domains,company-type,industries,twitter-id,website-url,logo-url,employee-count-range,specialties,locations,description,founded-year,num-followers)?format=json')
+    IN.API.Raw('companies/'+comp[0].id+':(id,name,company-type,website-url,logo-url,specialties,locations,description)?format=json')
         .method('GET')
         .result(postProfileCompanyData)
 
@@ -70,34 +70,24 @@ postProfileCompanyData=(data)=>{
     console.log(data)
     id = data.id
     name = data.name
-    email = data.emailDomains
     com_type = data.companyType.name
-    industri = data.industries.values[0].name
     website = data.websiteUrl
     logo_url = data.logoUrl
-    console.log(logo_url)
-    size = data.employeeCountRange.name
     desc = data.description
-    founded_year = data.foundedYear
-    followers = data.numFollowers
-    city = data.locations.values[0].address.street1
-    alert("bentar")
+    specialties = data.specialties
+    address = data.locations
     $.ajax({
         method: "POST",
         url: '/profil/add-company/',
         data: {
             id: id,
             name:name,
-            email:email,
             com_type:com_type,
-            industri:industri,
             website:website,
             logo_url:logo_url,
-            size:size,
             desc:desc,
-            founded_year:founded_year,
-            followers:followers,
-            city:city,
+            specialties:specialties,
+            address:address,
             csrfmiddlewaretoken: '{{ csrf_token }}'
         },
         beforeSend: function(xhr) {

@@ -1,33 +1,40 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
+from django.views.decorators.csrf import csrf_exempt
 import os
 import json
 
 response = {}
 
-def index(request):
-	response['author'] = 'Anisha Inas'
-	html = 'fitur_2/fitur_2.html'
-	print ("#==> profile")
-	# ## sol : bagaimana cara mencegah error, jika url profile langsung diakses
-	# if 'user_login' not in request.session.keys():
-	#     return HttpResponseRedirect(reverse('fitur-1:index'))
-	# ## end of sol
+def index(request, id):
+    response['login'] = True
+    company = Company.objects.get(id__exact=id)
+    response['name'] = company.name
+    response['com_type'] = company.com_type
+    response['website'] = company.website
+    response['logo_url'] = company.logo_url
+    response['desc'] = company.desc
+    response['specialities'] = company.specialities
+    response['address'] = company.address
+    print(company.specialities)
+    return render(request, html, response)
 
-	# set_data_for_session(response, request)
-	# print('user_login' in request.session)
-	# if('user_login' in request.session):
-	# 	print("udah login")
-	# 	try:
-	# 		response['name'] = request.session.get('name')
-	# 		if(response['name']==None):
-	# 			raise KeyError
-	# 	except KeyError:
-	# 		get_data(request)
+@csrf_exempt
+def add_company(request):
+    id = request.POST.get('id')
 
-	# 	return render(request, html, response)
-	# else:
-	# 	return HttpResponseRedirect('../fitur-1/')
+    if (Company.objects.filter(id__exact=id).count()> 0):
+        return HttpResponse(id)
 
-	return render(request, html, response)
+    name = request.POST.get('name')
+    com_type = request.POST.get('com_type')
+    website = request.POST.get('website')
+    logo_url = request.POST.get('logo_url')
+    desc = request.POST.get('desc')
+    specialities = request.POST.get('specialities')
+    print(specialities)
+    address = request.POST.get('address')
+    company = Company(id=id, name=name,com_type=com_type,website=website,logo_url=logo_url,desc=desc,address=address)
+    company.save()
+    return HttpResponse(id)
