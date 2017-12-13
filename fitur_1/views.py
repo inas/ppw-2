@@ -23,8 +23,8 @@ def add_session(request):
             user.id = id
             user.name = name
             user.save()
-        return HttpResponseRedirect(reverse('fitur-2:index'))
+        return HttpResponseRedirect(reverse(user.id))
 
 def remove_session(request):
     request.session.flush()
-    return HttpResponseRedirect(reverse('fitur-2:index'))
+    return HttpResponseRedirect(reverse(user.id))

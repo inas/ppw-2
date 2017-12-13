@@ -18,6 +18,7 @@ def index(request, id):
     response['specialities'] = company.specialities
     response['address'] = company.address
     print(company.specialities)
+    html = 'fitur_2/fitur_2.html/'
     return render(request, html, response)
 
 @csrf_exempt

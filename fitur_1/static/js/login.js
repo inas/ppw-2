@@ -9,29 +9,12 @@ function getProfileData() {
 // Handle the successful return from the API call
 function displayProfileData(data){
     var user = data.values[0];
-    var id = user.id;
-    console.log(id);
-    IN.API.Raw("/companies?format=json&is-company-admin=true").method("GET").result(
-        function(response){
-            console.log(response.values[0].id)
-            $.ajax({
-                method :"POST",
-                url: 'fitur-1/add-session',
-                data: {
-                    name: user.firstName + " " + user.lastName,
-                    id : id,
-                    companyID : response.values[0].id,
-                    csrfmiddlewaretoken : '{{csrf_token}}'
-                },
-                success : function(){},
-                error : function(error){}
-            });
-            getProfileCompanyData
+    console.log(data);
+    IN.API.Raw('companies?format=json&is-company-admin=true')
+        .method('GET')
+        .result(getProfileCompanyData);
+};
 
-});
-    window.location.assign("/fitur-2")
-    $('.navigation-list').append('<li id="#logoutBt"><a onclick="logout()">Log out</a></li>')
-}
 
 function shareContent() {
     
@@ -55,15 +38,15 @@ IN.API.Raw("/companies/" + cpnyID + "/shares?format=json")
 getProfileCompanyData = (data)=>{
     comp = data.values
     company_id = comp[0].id
-    IN.API.Raw('companies/'+comp[0].id+':(id,name,company-type,website-url,logo-url,specialties,locations,description)?format=json')
+    IN.API.Raw('/companies/'+comp[0].id+':(id,name,company-type,website-url,logo-url,specialties,locations,description)?format=json')
         .method('GET')
         .result(postProfileCompanyData)
 
 }
 
 openProfile= (id)=>{
-    console.log(id)
-    window.open('/profil/'+id+'/', '_self')
+    alert('open');
+    window.open('/fitur-2/'+id+'/', '_self')
 }
 
 postProfileCompanyData=(data)=>{
@@ -78,7 +61,7 @@ postProfileCompanyData=(data)=>{
     address = data.locations
     $.ajax({
         method: "POST",
-        url: '/profil/add-company/',
+        url: '/fitur-2/add-company/',
         data: {
             id: id,
             name:name,
