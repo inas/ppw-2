@@ -1,19 +1,22 @@
 function onLinkedInLoad() {
-        IN.Event.on(IN, "auth", getProfileData);
+    IN.Event.on(IN, "auth", getProfileData);
 }
+    
 // Use the API call wrapper to request the member's profile data
 function getProfileData() {
-    IN.API.Profile("me").fields("id", "first-name", "last-name", "headline", "location", "picture-url", "public-profile-url", "email-address").result(displayProfileData).error(onError);
+    IN.API.Profile("me").fields("id", "first-name", "last-name", "headline", "location", "picture-url", "public-profile-url", "email-address")
+        .result(displayProfileData)
+        .error(onError);
 }
 
 // Handle the successful return from the API call
 function displayProfileData(data){
     var user = data.values[0];
-    console.log(data);
+    
     IN.API.Raw('companies?format=json&is-company-admin=true')
         .method('GET')
         .result(getProfileCompanyData);
-};
+}
 
 
 function shareContent() {
@@ -38,46 +41,30 @@ IN.API.Raw("/companies/" + cpnyID + "/shares?format=json")
 getProfileCompanyData = (data)=>{
     comp = data.values
     company_id = comp[0].id
-    IN.API.Raw('/companies/'+comp[0].id+':(id,name,company-type,website-url,logo-url,specialties,locations,description)?format=json')
+    IN.API.Raw('companies/'+comp[0].id+':(id,name,email-domains,company-type,industries,twitter-id,website-url,logo-url,employee-count-range,specialties,locations,description,founded-year,num-followers)?format=json')
         .method('GET')
         .result(postProfileCompanyData)
 
 }
 
 openProfile= (id)=>{
-    alert('open');
     window.open('/fitur-2/'+id+'/', '_self')
 }
 
 postProfileCompanyData=(data)=>{
-    console.log(data)
+    console.log(JSON.stringify(data))
     id = data.id
-    name = data.name
-    com_type = data.companyType.name
-    website = data.websiteUrl
-    logo_url = data.logoUrl
-    desc = data.description
-    specialties = data.specialties
-    address = data.locations
     $.ajax({
         method: "POST",
         url: '/fitur-2/add-company/',
-        data: {
-            id: id,
-            name:name,
-            com_type:com_type,
-            website:website,
-            logo_url:logo_url,
-            desc:desc,
-            specialties:specialties,
-            address:address,
-            csrfmiddlewaretoken: '{{ csrf_token }}'
-        },
+        data: data,
+        dataType: 'json',
+        id:id,
         beforeSend: function(xhr) {
             xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
         },
         success: function (id){
-            openProfile(id)
+            openProfile(this.id)
         },
         error: function (error){
             console.log(error)
@@ -90,3 +77,14 @@ postProfileCompanyData=(data)=>{
 function onError(error) {
     console.log(error);
 }
+
+// Destroy the session of linkedin
+function logout(){
+    IN.User.logout(removeProfileData);
+    // document.location.reload();
+}
+
+// Remove profile data from page
+function removeProfileData(){
+    document.getElementById('profileData').remove();
+}   

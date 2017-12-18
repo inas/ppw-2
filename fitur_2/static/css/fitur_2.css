@@ -514,10 +514,12 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 
 #specialities .specialities-container{
    margin-left: 1em;
-   margin-right: 1em;
-   margin-top: 1em;
-   font-family: Oswald;
-   display: flex;
+    margin-right: 1em;
+    margin-top: 1em;
+    font-family: Oswald;
+    font-size: 6em;
+    color: white;
+    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
@@ -576,6 +578,7 @@ body.disabled-onepage-scroll .main section.page3 .page_container {
 
 #contact .ghost-button{
   margin-top: 0;
+  width: auto;
 }
 
 #contact .address{
